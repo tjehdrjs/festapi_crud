@@ -19,7 +19,7 @@ class Item(BaseModel):
 
 
 # GET 요청: 특정 아이템 조회 기능
-@app.get("items/{items_id}")
+@app.get("/items/{item_id}")
 def read_item(item_id: int):
     # 아이템이 존재하는 경우 - 해당 아이템 반환
     if item_id in items:
@@ -44,7 +44,7 @@ def update_item(item_id: int, item: Item):
     if item_id not in items:
         return {"error": " Item not found"}
     # 아이템이 있는 경우 - 새 값으로 업데이트
-    item[item_id] = item.model_dump()
+    items[item_id] = item.model_dump()
     return {"message": "Item updated", "item": items[item_id]}
 
 
